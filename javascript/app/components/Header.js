@@ -3,7 +3,7 @@ import React from 'react';
 export default React.createClass({
   render() {
     return (
-      <div>Hello menu!</div>
+      <div className="app-header" />
     );
   },
 });

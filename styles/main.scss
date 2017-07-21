@@ -1,5 +1,8 @@
-@import './partials/Header';
+@import './constants';
+@import './components/header';
+@import './components/sidebar';
 
-.App {
-  @import './partials/Header';
+body {
+    margin: 0;
+    background-color: $PW-gray-blue;
 }
