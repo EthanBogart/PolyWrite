@@ -6,6 +6,8 @@
   "scripts": {
     "start": "electron -r babel-register .",
     "rebuild-ffi": "./node_modules/.bin/electron-rebuild -f -w ffi",
+    "rebuild-ref": "./node_modules/.bin/electron-rebuild -f -w ref",
+    "build-all": "npm rebuild-ffi && npm rebuild-ref",
     "eslint": "eslint ."
   },
   "repository": "https://github.com/EthanBogart/PolyWrite",
@@ -15,7 +17,9 @@
     "babel-eslint": "^7.2.3",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.24.1",
     "css-loader": "^0.28.4",
+    "electron-react-devtools": "^0.4.0",
     "electron-rebuild": "^1.5.11",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.2",
@@ -24,8 +28,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "node-libs-browser": "^2.0.0",
-    "node-sass": "^4.5.3",
-    "babel-register": "^6.24.1"
+    "node-sass": "^4.5.3"
   },
   "dependencies": {
     "electron": "~1.6.2",
@@ -34,7 +37,7 @@
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "react-thunk": "^1.0.0",
-    "rebuild": "^0.1.2",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "ref": "^1.3.4"
   }
 }
