@@ -4,7 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app/App';
 
-import '../styles/main.scss';
+// import '../styles/main.scss';
 
 ReactDOM.render(
   <div className="App">

@@ -1,0 +1,13 @@
+{
+  "env": {
+    "browser": true
+  },
+
+  rules: {
+    "react/jsx-filename-extension": 0
+  },
+
+  "extends": "eslint-config-airbnb",
+
+  "parser": "babel-eslint"
+}

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PolyWrite</title>
+    <title>Poly</title>
   </head>
   <div id="root"></div>
-  <script src="http://localhost:8080/webpack-dev-server.js"></script>
-  <script src="http://localhost:8080/built/bundle.js"></script>
+  <script>
+    require('babel-register');
+    require('./javascript/start');
+  </script>
 </html>
