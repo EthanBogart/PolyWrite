@@ -5,9 +5,10 @@
   "main": "main.js",
   "scripts": {
     "start": "electron -r babel-register .",
-    "rebuild-ffi": "./node_modules/.bin/electron-rebuild -f -w ffi",
-    "rebuild-ref": "./node_modules/.bin/electron-rebuild -f -w ref",
-    "build-all": "npm rebuild-ffi && npm rebuild-ref",
+    "build-ffi": "./node_modules/.bin/electron-rebuild -f -w ffi",
+    "build-ref": "./node_modules/.bin/electron-rebuild -f -w ref",
+    "rebuild-sass": "node-sass styles/main.scss styles/build/styles.css",
+    "build-deps": "./node_modules/.bin/electron-rebuild -f -w ffi && ./node_modules/.bin/electron-rebuild -f -w ref",
     "eslint": "eslint ."
   },
   "repository": "https://github.com/EthanBogart/PolyWrite",
@@ -26,9 +27,7 @@
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.1.0",
-    "node-libs-browser": "^2.0.0",
-    "node-sass": "^4.5.3"
+    "eslint-plugin-react": "^7.1.0"
   },
   "dependencies": {
     "electron": "~1.6.2",
