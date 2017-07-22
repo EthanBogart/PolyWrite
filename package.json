@@ -5,6 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron -r babel-register .",
+    "sass-start": "node-sass styles/main.scss styles/build/styles.css && electron -r babel-register .",
     "build-ffi": "./node_modules/.bin/electron-rebuild -f -w ffi",
     "build-ref": "./node_modules/.bin/electron-rebuild -f -w ref",
     "rebuild-sass": "node-sass styles/main.scss styles/build/styles.css",
@@ -27,7 +28,8 @@
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.1.0"
+    "eslint-plugin-react": "^7.1.0",
+    "node-sass": "^4.5.3"
   },
   "dependencies": {
     "electron": "~1.6.2",
