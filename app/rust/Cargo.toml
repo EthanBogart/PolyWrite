@@ -1,0 +1,10 @@
+[package]
+name = "poly_write"
+version = "0.0.1"
+authors = ["Ethan Bogart <ethan.bogart@yahoo.com>"]
+
+[lib]
+name= "fibonacci"
+crate-type = ["dylib"]
+
+[dependencies]

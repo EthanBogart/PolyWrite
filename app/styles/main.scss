@@ -1,0 +1,17 @@
+@import './constants';
+@import './containers/header';
+@import './containers/sidebar';
+@import './containers/contentview';
+
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.app-container {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}

@@ -1,0 +1,33 @@
+.app-header-container {
+  border-bottom: solid 1px #000000;
+  background-color: #90D7FF;
+  margin-left: 101px;
+  height: 30px; }
+
+.app-sidebar-container {
+  border-right: solid 1px #000000;
+  background-color: #5daba8;
+  width: 100px;
+  height: 100%;
+  position: absolute; }
+
+.content-view-container {
+  text-align: center;
+  line-height: 100%;
+  vertical-align: middle;
+  position: absolute;
+  margin-left: 101px;
+  height: 100%;
+  width: 100%;
+  background-color: #f5f9f8; }
+
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden; }
+
+.app-container {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  position: absolute; }
