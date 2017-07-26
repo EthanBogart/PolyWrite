@@ -1,7 +1,11 @@
-const electron = require('electron');
-
-const app = electron.app;
-const BrowserWindow = electron.BrowserWindow;
+import {
+  app,
+  ipcMain,
+  BrowserWindow,
+  dialog,
+} from 'electron';
+import * as ipc from './app/js/constants/ipc';
+import * as OpenDialog from './app/js/system/OpenDialog';
 
 const path = require('path');
 const url = require('url');
@@ -18,11 +22,18 @@ function createWindow() {
     slashes: true,
   }));
 
-  // mainWindow.webContents.openDevTools()
+  // mainWindow.webContents.openDevTools();
 
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
+
+  ipcMain.on(ipc.OPEN_FOLDER, (event, origin) => {
+    event.sender.send(origin, OpenDialog.openDirectory(dialog));
+  });
+  // ipcRenderer.on('showOpenDialog', () {
+  //   debugger;
+  // });
 }
 
 app.on('ready', createWindow);

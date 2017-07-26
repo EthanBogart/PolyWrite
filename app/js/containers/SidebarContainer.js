@@ -10,10 +10,19 @@ export default React.createClass({
     );
   },
 
+  renderContributeButton() {
+    return (
+      <SidebarButton
+        text="Add a contribution"
+      />
+    );
+  },
+
   render() {
     return (
       <div className="app-sidebar-container">
         {this.renderCompareButton()}
+        {this.renderContributeButton()}
       </div>
     );
   },

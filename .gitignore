@@ -5,3 +5,6 @@ yarn-error.log
 public
 rust/target
 rust/cargo.lock
+build
+dist
+package-lock.json

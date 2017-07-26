@@ -1,12 +1,16 @@
 'use es6';
 
 import React from 'react';
+import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom';
 import App from './js/App';
+import configureStore from './configureStore';
+
+const store = configureStore();
 
 ReactDOM.render(
-  <div className="app-container">
+  <Provider store={store}>
     <App />
-  </div>,
+  </Provider>,
   document.getElementById('root'),
 );

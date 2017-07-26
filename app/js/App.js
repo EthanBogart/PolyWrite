@@ -8,10 +8,12 @@ import ContentViewContainer from './containers/ContentViewContainer';
 export default React.createClass({
   render() {
     return (
-      <div>
+      <div className="app-container">
         <SidebarContainer />
-        <HeaderContainer />
-        <ContentViewContainer />
+        <div className="flex-column-container">
+          <HeaderContainer />
+          <ContentViewContainer />
+        </div>
       </div>
     );
   },

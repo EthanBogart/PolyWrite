@@ -1,0 +1,28 @@
+@mixin flex-grow-shrink() {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+@mixin flex-column-container() {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+
+.flex-column-container {
+  @include flex-column-container();
+}
+
+@mixin flex-column-item-stretch() {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+@mixin flex-row-item-stretch() {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  align-content: stretch;
+}

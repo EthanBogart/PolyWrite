@@ -9,6 +9,6 @@ export default React.createClass({
   render() {
     const { text } = this.props;
 
-    return <div>{text}</div>;
+    return <button>{text}</button>;
   },
 });

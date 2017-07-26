@@ -1,3 +1,6 @@
+@import './mixins/flex';
+@import './mixins/align';
+
 @import './constants';
 @import './containers/header';
 @import './containers/sidebar';
@@ -5,13 +8,14 @@
 
 body {
     margin: 0;
-    height: 100%;
     overflow: hidden;
 }
 
 .app-container {
-  box-sizing: border-box;
+  position: absolute;
   height: 100%;
   width: 100%;
-  position: absolute;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
 }

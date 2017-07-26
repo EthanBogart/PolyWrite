@@ -6,7 +6,7 @@ import NoFoldersView from '../components/views/NoFoldersView';
 // const ffi = require('ffi');
 //
 // const lib = ffi.Library(path.join(__dirname,
-//   '../../../rust/target/release/libfibonacci'),
+//   '../../../app/rust/target/release/libfibonacci'),
 //   {
 //     fibonacci: ['int', ['int']],
 //   });
