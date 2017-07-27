@@ -1,20 +1,25 @@
+'use es6';
+
 import React from 'react';
-import NoFoldersView from '../components/views/NoFoldersView';
+import { connect } from 'react-redux';
+import * as FolderActions from './../actions/FolderActions';
+import NoFoldersView from './../views/NoFoldersView';
+console.log(FolderActions);
+const { PropTypes } = React;
 
+const ContentViewContainer = React.createClass({
+  PropTypes: {
+    addFolder: PropTypes.func.isRequired,
+  },
 
-// const path = require('path');
-// const ffi = require('ffi');
-//
-// const lib = ffi.Library(path.join(__dirname,
-//   '../../../app/rust/target/release/libfibonacci'),
-//   {
-//     fibonacci: ['int', ['int']],
-//   });
-// According to Rust, the 20th fibonacci number is: {lib.fibonacci(20)}
-
-export default React.createClass({
   renderNoFolders() {
-    return <NoFoldersView />;
+    const { addFolder } = this.props;
+
+    return (
+      <NoFoldersView
+        addFolder={addFolder}
+      />
+    );
   },
 
   render() {
@@ -25,3 +30,14 @@ export default React.createClass({
     );
   },
 });
+
+export default connect(
+  state => {
+    return {
+      openFolders: state.openFolders,
+    };
+  },
+  {
+    ...FolderActions,
+  },
+)(ContentViewContainer);
