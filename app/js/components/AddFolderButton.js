@@ -11,7 +11,7 @@ const { PropTypes } = React;
 const AddFolderButton = React.createClass({
   PropTypes: {
     addFolder: PropTypes.func.isRequired,
-    className: PropTypes.string,
+    classNames: PropTypes.string,
     text: PropTypes.string,
   },
 
@@ -23,10 +23,13 @@ const AddFolderButton = React.createClass({
   },
 
   render() {
-    const { text, addFolder } = this.props;
+    const { text, classNames } = this.props;
 
     return (
-      <button onClick={this.onOpenFolderClick}>
+      <button
+        onClick={this.onOpenFolderClick}
+        className={classNames}
+      >
         {text}
       </button>
     );
