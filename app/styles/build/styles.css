@@ -33,13 +33,19 @@
   display: flex;
   flex: 1 1 auto; }
 
-.folder-list {
+.folder-file-list {
   margin: 5%; }
 
 .folder-list-row {
   text-align: left;
   line-height: 24px; }
   .folder-list-row:hover {
+    background-color: #FFFFFF; }
+
+.file-list-row {
+  text-align: left;
+  line-height: 24px; }
+  .file-list-row:hover {
     background-color: #FFFFFF; }
 
 body {

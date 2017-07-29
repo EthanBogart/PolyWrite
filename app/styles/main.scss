@@ -6,8 +6,9 @@
 @import './containers/sidebar';
 @import './containers/contentview';
 
-@import './components/folderlist';
+@import './components/folderfilelist';
 @import './components/folderlistrow';
+@import './components/filelistrow';
 
 body {
     margin: 0;

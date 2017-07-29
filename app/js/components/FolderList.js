@@ -11,8 +11,12 @@ export default React.createClass({
   render() {
     const { openFolders } = this.props;
 
+    if (!openFolders.length) {
+      return null;
+    }
+
     return (
-      <div className="folder-list">
+      <div className="folder-file-list">
         <h3>Open Folders:</h3>
         {openFolders.map((dir, index) => {
           const key = [index, dir].join('-');
