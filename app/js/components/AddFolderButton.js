@@ -1,11 +1,9 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
 import { ipcRenderer } from 'electron';
 
 import { OPEN_FOLDER } from './../constants/ipc';
-import * as FolderActions from './../actions/FolderActions';
 
-const AddFolderButton = React.createClass({
+export default React.createClass({
   PropTypes: {
     addFolder: PropTypes.func.isRequired,
     classNames: PropTypes.string,
@@ -13,9 +11,6 @@ const AddFolderButton = React.createClass({
   },
 
   onOpenFolderClick() {
-    ipcRenderer.on('NoFoldersViewClick', (event, path) => {
-      this.props.addFolder(path);
-    });
     ipcRenderer.send(OPEN_FOLDER, 'NoFoldersViewClick');
   },
 
@@ -32,10 +27,3 @@ const AddFolderButton = React.createClass({
     );
   },
 });
-
-export default connect(
-  () => { return {}; },
-  {
-    ...FolderActions,
-  },
-)(AddFolderButton);

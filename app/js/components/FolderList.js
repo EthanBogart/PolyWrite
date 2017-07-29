@@ -14,11 +14,13 @@ export default React.createClass({
     return (
       <div className="folder-list">
         <h3>Open Folders:</h3>
-        {openFolders.map((dir) => {
+        {openFolders.map((dir, index) => {
+          const key = [index, dir].join('-');
+
           return (
             <FolderListRow
               folder={dir}
-              key={dir}
+              key={key}
             />
           );
         })}
