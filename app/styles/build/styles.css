@@ -33,6 +33,15 @@
   display: flex;
   flex: 1 1 auto; }
 
+.folder-list {
+  margin: 5%; }
+
+.folder-list-row {
+  text-align: left;
+  line-height: 24px; }
+  .folder-list-row:hover {
+    background-color: #FFFFFF; }
+
 body {
   margin: 0;
   overflow: hidden; }

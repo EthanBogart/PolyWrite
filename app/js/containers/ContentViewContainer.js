@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import * as FolderActions from './../actions/FolderActions';
 
 import AddFolderButton from './../components/AddFolderButton';
+import FolderList from './../components/FolderList';
 import NoFoldersView from './../views/NoFoldersView';
 
 const { PropTypes } = React;
@@ -12,18 +13,6 @@ const { PropTypes } = React;
 const ContentViewContainer = React.createClass({
   PropTypes: {
     openFolders: PropTypes.array,
-  },
-
-  renderFolderList() {
-    const { openFolders } = this.props;
-
-    return openFolders.map((dir) => {
-      return (
-        <div key={dir}>
-          {dir}
-        </div>
-      );
-    });
   },
 
   renderNoFolders() {
@@ -45,12 +34,10 @@ const ContentViewContainer = React.createClass({
 
     return (
       <div className="flex-column-container">
-        <div className="vertical-align-middle">
-          <AddFolderButton text="Add another folder" />
-          <div>
-            {this.renderFolderList()}
-          </div>
-        </div>
+        <AddFolderButton text="Add another folder" />
+        <FolderList
+          openFolders={openFolders}
+        />
       </div>
     );
   },
