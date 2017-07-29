@@ -16,8 +16,12 @@ const App = React.createClass({
   },
 
   render() {
-    ipcRenderer.on('NoFoldersViewClick', (event, path) => {
+    ipcRenderer.on('AddFolderButtonClick', (event, path) => {
       this.props.addFolder(path);
+    });
+
+    ipcRenderer.on('AddFileButtonClick', (event, path) => {
+      this.props.addFile(path);
     });
 
     return (

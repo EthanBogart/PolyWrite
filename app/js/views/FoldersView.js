@@ -6,6 +6,7 @@ import FolderList from './../components/FolderList';
 export default React.createClass({
   PropTypes: {
     openFolders: PropTypes.array.isRequired,
+    openFiles: PropTypes.array.isRequired,
   },
 
   render() {

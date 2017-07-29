@@ -1,9 +1,11 @@
-export function openDirectory(dialog) {
+export function openFolder(dialog) {
   return dialog.showOpenDialog({
-    properties: ['openDirectory'],
+    properties: ['openDirectory', 'multiSelections'],
   });
 }
 
 export function openFile(dialog) {
-  return dialog.showOpenDialog();
+  return dialog.showOpenDialog({
+    properties: ['openFile', 'multiSelections'],
+  });
 }

@@ -4,5 +4,8 @@ export default keyMirror({
   ADD_FOLDER: null,
   REMOVE_FOLDER: null,
 
+  ADD_FILE: null,
+  REMOVE_FILE: null,
+
   SWITCH_VIEW: null,
 });

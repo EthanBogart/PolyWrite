@@ -1,5 +1,6 @@
 import React from 'react';
 import AddFolderButton from './../components/AddFolderButton';
+import AddFileButton from './../components/AddFileButton';
 
 const { PropTypes } = React;
 
@@ -15,6 +16,9 @@ export default React.createClass({
         <div>To add a project folder and get going, click here:</div>
         <AddFolderButton
           text="Open a folder"
+        />
+        <AddFileButton
+          text="Open a file"
         />
       </div>
     );

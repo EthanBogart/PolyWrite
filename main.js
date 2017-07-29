@@ -29,7 +29,11 @@ function createWindow() {
   });
 
   ipcMain.on(ipc.OPEN_FOLDER, (event, origin) => {
-    event.sender.send(origin, OpenDialog.openDirectory(dialog));
+    event.sender.send(origin, OpenDialog.openFolder(dialog));
+  });
+
+  ipcMain.on(ipc.OPEN_FILE, (event, origin) => {
+    event.sender.send(origin, OpenDialog.openFile(dialog));
   });
   // ipcRenderer.on('showOpenDialog', () {
   //   debugger;

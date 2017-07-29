@@ -12,3 +12,15 @@ export function removeFolder(folders) {
     folders,
   });
 }
+
+export function addFile(files) {
+  return createAction(ActionTypes.ADD_FILE, {
+    files,
+  });
+}
+
+export function removeFile(files) {
+  return createAction(ActionTypes.REMOVE_FILE, {
+    files,
+  });
+}

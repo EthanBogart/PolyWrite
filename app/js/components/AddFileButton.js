@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { ipcRenderer } from 'electron';
 
-import { OPEN_FOLDER } from './../constants/ipc';
+import { OPEN_FILE } from './../constants/ipc';
 
 export default React.createClass({
   PropTypes: {
@@ -9,8 +9,8 @@ export default React.createClass({
     text: PropTypes.string,
   },
 
-  onOpenFolderClick() {
-    ipcRenderer.send(OPEN_FOLDER, 'AddFolderButtonClick');
+  onOpenFileClick() {
+    ipcRenderer.send(OPEN_FILE, 'AddFileButtonClick');
   },
 
   render() {
@@ -18,7 +18,7 @@ export default React.createClass({
 
     return (
       <button
-        onClick={this.onOpenFolderClick}
+        onClick={this.onOpenFileClick}
         className={classNames}
       >
         {text}
