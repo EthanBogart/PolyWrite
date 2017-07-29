@@ -8,11 +8,14 @@ import AddFolderButton from './../components/AddFolderButton';
 import FolderList from './../components/FolderList';
 import NoFoldersView from './../views/NoFoldersView';
 
+import views from './../constants/view';
+
 const { PropTypes } = React;
 
 const ContentViewContainer = React.createClass({
   PropTypes: {
     openFolders: PropTypes.array,
+    viewName: PropTypes.string,
   },
 
   renderNoFolders() {
@@ -26,7 +29,11 @@ const ContentViewContainer = React.createClass({
   },
 
   renderFolders() {
-    const { openFolders } = this.props;
+    const { openFolders, viewName } = this.props;
+
+    if (viewName !== views.FOLDERS_VIEW) {
+      return null;
+    }
 
     if (!openFolders.length) {
       return this.renderNoFolders();
@@ -42,10 +49,21 @@ const ContentViewContainer = React.createClass({
     );
   },
 
+  renderChart() {
+    const { viewName } = this.props;
+
+    if (viewName !== views.CHART_VIEW) {
+      return null;
+    }
+
+    return <div>Chart view</div>;
+  },
+
   render() {
     return (
       <div className="content-view-container">
         {this.renderFolders()}
+        {this.renderChart()}
       </div>
     );
   },
@@ -55,6 +73,7 @@ export default connect(
   state => {
     return {
       openFolders: state.openFolders,
+      viewName: state.viewName,
     };
   },
   {

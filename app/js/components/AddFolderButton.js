@@ -1,12 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { ipcRenderer } from 'electron';
 
 import { OPEN_FOLDER } from './../constants/ipc';
 import * as FolderActions from './../actions/FolderActions';
-
-const { PropTypes } = React;
-
 
 const AddFolderButton = React.createClass({
   PropTypes: {
