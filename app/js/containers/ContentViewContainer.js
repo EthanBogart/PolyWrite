@@ -2,10 +2,8 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import * as FolderActions from './../actions/FolderActions';
 
-import AddFolderButton from './../components/AddFolderButton';
-import FolderList from './../components/FolderList';
+import FoldersView from './../views/FoldersView';
 import NoFoldersView from './../views/NoFoldersView';
 
 import views from './../constants/view';
@@ -19,12 +17,8 @@ const ContentViewContainer = React.createClass({
   },
 
   renderNoFolders() {
-    const { addFolder } = this.props;
-
     return (
-      <NoFoldersView
-        addFolder={addFolder}
-      />
+      <NoFoldersView />
     );
   },
 
@@ -40,12 +34,9 @@ const ContentViewContainer = React.createClass({
     }
 
     return (
-      <div className="flex-column-container">
-        <AddFolderButton text="Add another folder" />
-        <FolderList
-          openFolders={openFolders}
-        />
-      </div>
+      <FoldersView
+        openFolders={openFolders}
+      />
     );
   },
 
@@ -62,8 +53,10 @@ const ContentViewContainer = React.createClass({
   render() {
     return (
       <div className="content-view-container">
-        {this.renderFolders()}
-        {this.renderChart()}
+        <div className="flex-column-container">
+          {this.renderFolders()}
+          {this.renderChart()}
+        </div>
       </div>
     );
   },
@@ -76,7 +69,5 @@ export default connect(
       viewName: state.viewName,
     };
   },
-  {
-    ...FolderActions,
-  },
+  { },
 )(ContentViewContainer);
