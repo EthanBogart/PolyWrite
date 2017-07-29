@@ -1,14 +1,14 @@
 import ActionTypes from './ActionTypes';
 import createAction from './createAction';
 
-export function addFolder(folder) {
+export function addFolder(folders) {
   return createAction(ActionTypes.ADD_FOLDER, {
-    folder,
+    folders,
   });
 }
 
-export function removeFolder(folder) {
+export function removeFolder(folders) {
   return createAction(ActionTypes.REMOVE_FOLDER, {
-    folder,
+    folders,
   });
 }
