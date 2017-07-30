@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import FoldersView from './../views/FoldersView';
 import NoFoldersView from './../views/NoFoldersView';
+import CompareFilesView from './../views/CompareFilesView';
 
 import views from './../constants/view';
 
@@ -63,7 +64,11 @@ const ContentViewContainer = React.createClass({
       return null;
     }
 
-    return <div>Compare view. Selected file: {selectedFile}</div>;
+    if (!selectedFile) {
+      return <div>No file selected</div>;
+    }
+
+    return <CompareFilesView />;
   },
 
   render() {
