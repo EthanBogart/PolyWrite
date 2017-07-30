@@ -26,7 +26,6 @@ const App = React.createClass({
 
     return (
       <div className="app-container">
-        <SidebarContainer />
         <div className="flex-column-container">
           <HeaderContainer />
           <ContentViewContainer />
