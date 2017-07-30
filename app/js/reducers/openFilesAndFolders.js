@@ -28,8 +28,8 @@ export default function openFolders(
               (path) => {
                 return fs.statSync([newFolder, path].join('/')).isFile()
                   && !(/(^|\/)\.[^\/\.]/g).test(path);
-              }
-            );
+              },
+            ).map(path => [newFolder, path].join('/'));
 
             newFolders.push(new folderRecords.Folder({
               path: newFolder,
@@ -47,19 +47,29 @@ export default function openFolders(
       );
     }
     case ActionTypes.ADD_FILE: {
-      const newFiles = [];
+      let newFiles = new List();
       const openFileList = action.payload.files;
       let folder;
 
       for (folder in action.payload.files) {
         const newFile = openFileList[folder]
         if (!state.get('files').includes(newFile)) {
-          newFiles.push(newFile);
+          newFiles = newFiles.push(newFile);
         }
       }
 
-      return state.set('files',
+      return state.set(
+        'files',
         state.get('files').concat(newFiles),
+      );
+    }
+    case ActionTypes.REMOVE_FILE: {
+      const files = state.get('files');
+      const fileIndex = files.indexOf(action.payload.file);
+
+      return state.set(
+        'files',
+        files.delete(fileIndex),
       );
     }
     default:

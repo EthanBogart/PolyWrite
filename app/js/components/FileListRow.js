@@ -2,6 +2,8 @@
 
 import React, { PropTypes } from 'react';
 
+import RemoveFileButton from './RemoveFileButton';
+
 export default React.createClass({
   PropTypes: {
     file: PropTypes.string.isRequired,
@@ -13,6 +15,10 @@ export default React.createClass({
     return (
       <div className="file-list-row">
         {file}
+        <RemoveFileButton
+          text="Remove this file"
+          file={file}
+        />
       </div>
     );
   },

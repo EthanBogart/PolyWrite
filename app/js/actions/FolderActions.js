@@ -19,8 +19,8 @@ export function addFile(files) {
   });
 }
 
-export function removeFile(files) {
+export function removeFile(file) {
   return createAction(ActionTypes.REMOVE_FILE, {
-    files,
+    file,
   });
 }

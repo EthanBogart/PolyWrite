@@ -1,6 +1,6 @@
 'use es6';
 
-import { Record } from 'immutable';
+import { Record, List } from 'immutable';
 
 export const Folder = Record({
   path: '',
@@ -8,6 +8,6 @@ export const Folder = Record({
 }, 'Folder');
 
 export const OpenFilesAndFolders = Record({
-  files: [],
+  files: new List(),
   folders: [],
 }, 'OpenFilesAndFolders');

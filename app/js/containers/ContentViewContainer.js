@@ -32,7 +32,7 @@ const ContentViewContainer = React.createClass({
     const openFiles = openFilesAndFolders.get('files');
     const openFolders = openFilesAndFolders.get('folders');
 
-    if (!openFiles.length && !openFolders.length) {
+    if (!openFiles.size && !openFolders.length) {
       return this.renderNoFolders();
     }
 

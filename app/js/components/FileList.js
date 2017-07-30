@@ -21,7 +21,7 @@ export default React.createClass({
   render() {
     const { openFiles, classes } = this.props;
 
-    if (!openFiles.length) {
+    if (!openFiles.size) {
       return null;
     }
 
