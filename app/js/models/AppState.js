@@ -7,4 +7,5 @@ import views from './../constants/view';
 export default Record({
   openFilesAndFolders: new OpenFilesAndFolders(),
   viewName: views.FOLDERS_VIEW,
+  selectedFile: null,
 }, 'AppState');

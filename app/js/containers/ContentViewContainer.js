@@ -3,6 +3,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import changeSelectedFile from './../actions/SelectFileActions';
+
 import FoldersView from './../views/FoldersView';
 import NoFoldersView from './../views/NoFoldersView';
 
@@ -12,7 +14,9 @@ const { PropTypes } = React;
 
 const ContentViewContainer = React.createClass({
   PropTypes: {
-    openFilesAndFolders: PropTypes.array,
+    selectedFile: PropTypes.string,
+    changeSelectedFile: PropTypes.func.isRequired,
+    openFilesAndFolders: PropTypes.object,
     viewName: PropTypes.string,
   },
 
@@ -23,7 +27,7 @@ const ContentViewContainer = React.createClass({
   },
 
   renderFolders() {
-    const { openFilesAndFolders, viewName } = this.props;
+    const { openFilesAndFolders, viewName, changeSelectedFile } = this.props;
 
     if (viewName !== views.FOLDERS_VIEW) {
       return null;
@@ -40,6 +44,7 @@ const ContentViewContainer = React.createClass({
       <FoldersView
         openFolders={openFolders}
         openFiles={openFiles}
+        changeSelectedFile={changeSelectedFile}
       />
     );
   },
@@ -55,13 +60,13 @@ const ContentViewContainer = React.createClass({
   },
 
   renderCompare() {
-    const { viewName } = this.props;
+    const { viewName, selectedFile } = this.props;
 
     if (viewName !== views.COMPARE_VIEW) {
       return null;
     }
 
-    return <div>Compare view</div>;
+    return <div>Compare view. Selected file: {selectedFile}</div>;
   },
 
   render() {
@@ -78,11 +83,14 @@ const ContentViewContainer = React.createClass({
 });
 
 export default connect(
-  state => {
+  (state) => {
     return {
+      selectedFile: state.selectedFile,
       openFilesAndFolders: state.openFilesAndFolders,
       viewName: state.viewName,
     };
   },
-  { },
+  {
+    changeSelectedFile,
+  },
 )(ContentViewContainer);

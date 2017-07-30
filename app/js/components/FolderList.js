@@ -6,10 +6,11 @@ import FolderListRow from './FolderListRow';
 export default React.createClass({
   PropTypes: {
     openFolders: PropTypes.array.isRequired,
+    changeSelectedFile: PropTypes.func.isRequired,
   },
 
   render() {
-    const { openFolders } = this.props;
+    const { openFolders, changeSelectedFile } = this.props;
 
     if (!openFolders.length) {
       return null;
@@ -25,6 +26,7 @@ export default React.createClass({
             <FolderListRow
               folder={dir}
               key={key}
+              changeSelectedFile={changeSelectedFile}
             />
           );
         })}

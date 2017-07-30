@@ -8,4 +8,6 @@ export default keyMirror({
   REMOVE_FILE: null,
 
   SWITCH_VIEW: null,
+
+  CHANGE_SELECTED_FILE: null,
 });
