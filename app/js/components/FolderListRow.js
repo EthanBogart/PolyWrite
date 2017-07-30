@@ -6,7 +6,6 @@ import FileList from './FileList';
 export default React.createClass({
   PropTypes: {
     folder: PropTypes.object.isRequired,
-    changeSelectedFile: PropTypes.func.isRequired,
   },
 
   getInitialState() {
@@ -24,7 +23,7 @@ export default React.createClass({
   },
 
   renderFileList() {
-    const { folder, changeSelectedFile } = this.props;
+    const { folder } = this.props;
     const { showFileList } = this.state;
 
     if (!showFileList) {

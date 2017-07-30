@@ -3,18 +3,23 @@
 import React, { PropTypes } from 'react';
 
 import RemoveFileButton from './RemoveFileButton';
+import SelectFileButton from './SelectFileButton';
 
 export default React.createClass({
   PropTypes: {
     file: PropTypes.string.isRequired,
     shouldShowButton: PropTypes.bool.isRequired,
-    changeSelectedFile: PropTypes.func.isRequired,
   },
 
-  onFileRowClick() {
-    const { changeSelectedFile, file } = this.props;
+  renderSelectFileButton() {
+    const { file } = this.props;
 
-    changeSelectedFile(file);
+    return (
+      <SelectFileButton
+        text="Select this file"
+        file={file}
+      />
+    );
   },
 
   renderRemoveFileButton() {
@@ -33,11 +38,8 @@ export default React.createClass({
 
     return (
       <div className="file-list-row">
-        <div
-          onClick={this.onFileRowClick}
-        >
-          {file}
-        </div>
+        {file}
+        {this.renderSelectFileButton()}
         {this.renderRemoveFileButton()}
       </div>
     );

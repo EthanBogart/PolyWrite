@@ -24,3 +24,10 @@ export function removeFile(file) {
     file,
   });
 }
+
+export function changeSelectedFile(file) {
+  return createAction(
+    ActionTypes.CHANGE_SELECTED_FILE,
+    file,
+  );
+}

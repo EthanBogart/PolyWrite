@@ -3,8 +3,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import changeSelectedFile from './../actions/SelectFileActions';
-
 import FoldersView from './../views/FoldersView';
 import NoFoldersView from './../views/NoFoldersView';
 
@@ -15,7 +13,6 @@ const { PropTypes } = React;
 const ContentViewContainer = React.createClass({
   PropTypes: {
     selectedFile: PropTypes.string,
-    changeSelectedFile: PropTypes.func.isRequired,
     openFilesAndFolders: PropTypes.object,
     viewName: PropTypes.string,
   },
@@ -90,7 +87,5 @@ export default connect(
       viewName: state.viewName,
     };
   },
-  {
-    changeSelectedFile,
-  },
+  { },
 )(ContentViewContainer);

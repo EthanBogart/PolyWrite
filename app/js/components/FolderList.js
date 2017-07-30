@@ -10,7 +10,7 @@ export default React.createClass({
   },
 
   render() {
-    const { openFolders, changeSelectedFile } = this.props;
+    const { openFolders } = this.props;
 
     if (!openFolders.length) {
       return null;
@@ -26,7 +26,6 @@ export default React.createClass({
             <FolderListRow
               folder={dir}
               key={key}
-              changeSelectedFile={changeSelectedFile}
             />
           );
         })}
