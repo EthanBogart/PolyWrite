@@ -68,7 +68,11 @@ const ContentViewContainer = React.createClass({
       return <div>No file selected</div>;
     }
 
-    return <CompareFilesView />;
+    return (
+      <CompareFilesView
+        selectedFile={selectedFile}
+      />
+    );
   },
 
   render() {
