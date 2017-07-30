@@ -21,11 +21,21 @@ export default React.createClass({
     );
   },
 
+  renderCompareButton() {
+    return (
+      <ViewButton
+        text="Compare Differences"
+        viewName={views.COMPARE_VIEW}
+      />
+    );
+  },
+
   render() {
     return (
       <div className="app-header-container">
         {this.renderChartButton()}
         {this.renderFoldersButton()}
+        {this.renderCompareButton()}
       </div>
     );
   },

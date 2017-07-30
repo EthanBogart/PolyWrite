@@ -54,12 +54,23 @@ const ContentViewContainer = React.createClass({
     return <div>Chart view</div>;
   },
 
+  renderCompare() {
+    const { viewName } = this.props;
+
+    if (viewName !== views.COMPARE_VIEW) {
+      return null;
+    }
+
+    return <div>Compare view</div>;
+  },
+
   render() {
     return (
       <div className="content-view-container">
         <div className="flex-column-container">
           {this.renderFolders()}
           {this.renderChart()}
+          {this.renderCompare()}
         </div>
       </div>
     );
