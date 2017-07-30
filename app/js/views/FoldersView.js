@@ -1,3 +1,5 @@
+'use es6';
+
 import React, { PropTypes } from 'react';
 
 import AddFolderButton from './../components/AddFolderButton';
@@ -23,6 +25,7 @@ export default React.createClass({
         />
         <FileList
           openFiles={openFiles}
+          shouldShowHeader={true}
         />
       </div>
     );

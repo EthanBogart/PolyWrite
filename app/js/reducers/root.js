@@ -1,3 +1,5 @@
+'use es6';
+
 import AppState from '../models/AppState';
 import openFilesAndFolders from './openFilesAndFolders';
 import viewName from './viewName';

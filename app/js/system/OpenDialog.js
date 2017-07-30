@@ -1,3 +1,5 @@
+'use es6';
+
 export function openFolder(dialog) {
   return dialog.showOpenDialog({
     properties: ['openDirectory', 'multiSelections'],
