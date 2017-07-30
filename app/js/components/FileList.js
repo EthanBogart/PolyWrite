@@ -8,18 +8,18 @@ import FileListRow from './FileListRow';
 export default React.createClass({
   PropTypes: {
     openFiles: PropTypes.array.isRequired,
-    shouldShowHeader: PropTypes.bool.isRequired,
+    isSublist: PropTypes.bool.isRequired,
     classes: PropTypes.string,
   },
 
   renderHeader() {
-    const { shouldShowHeader } = this.props;
+    const { isSublist } = this.props;
 
-    return shouldShowHeader ? <h3>Open Files:</h3> : null;
+    return isSublist ? null : <h3>Open Files:</h3>;
   },
 
   render() {
-    const { openFiles, classes } = this.props;
+    const { openFiles, classes, isSublist } = this.props;
 
     if (!openFiles.size) {
       return null;
@@ -37,6 +37,7 @@ export default React.createClass({
             <FileListRow
               file={file}
               key={key}
+              shouldShowButton={!isSublist}
             />
           );
         })}

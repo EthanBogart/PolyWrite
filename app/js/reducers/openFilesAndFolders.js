@@ -21,7 +21,7 @@ export default function openFolders(
 
         if (!state.get('folders').includes(newFolder)) {
           try {
-            const children = fs.readdirSync(newFolder);
+            const children = new List(fs.readdirSync(newFolder));
 
             // Filters out folders and hidden files
             const files = children.filter(

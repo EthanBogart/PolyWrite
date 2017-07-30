@@ -11,7 +11,7 @@
 .app-header-container {
   border-bottom: solid 1px #000000;
   background-color: #90D7FF;
-  height: 30px;
+  min-height: 30px;
   display: flex;
   flex-direction: row;
   align-items: stretch;

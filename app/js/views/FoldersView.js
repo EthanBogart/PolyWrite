@@ -25,7 +25,7 @@ export default React.createClass({
         />
         <FileList
           openFiles={openFiles}
-          shouldShowHeader={true}
+          isSublist={false}
         />
       </div>
     );

@@ -33,7 +33,7 @@ export default React.createClass({
     return (
       <FileList
         openFiles={folder.get('files')}
-        shouldShowHeader={false}
+        isSublist={true}
         classes="folder-child"
       />
     );
