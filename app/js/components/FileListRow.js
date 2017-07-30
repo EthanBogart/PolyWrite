@@ -14,11 +14,15 @@ export default React.createClass({
   },
 
   renderSelectFileButton() {
-    const { file } = this.props;
+    const { file, selectedFile } = this.props;
+
+    const text = file === selectedFile
+      ? 'Unselect this file'
+      : 'Select this file';
 
     return (
       <SelectFileButton
-        text="Select this file"
+        text={text}
         file={file}
       />
     );
