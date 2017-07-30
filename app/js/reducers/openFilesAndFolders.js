@@ -21,7 +21,15 @@ export default function openFolders(
 
         if (!state.get('folders').includes(newFolder)) {
           try {
-            const files = fs.readdirSync(newFolder);
+            const children = fs.readdirSync(newFolder);
+
+            // Filters out folders and hidden files
+            const files = children.filter(
+              (path) => {
+                return fs.statSync([newFolder, path].join('/')).isFile()
+                  && !(/(^|\/)\.[^\/\.]/g).test(path);
+              }
+            );
 
             newFolders.push(new folderRecords.Folder({
               path: newFolder,
@@ -49,7 +57,7 @@ export default function openFolders(
           newFiles.push(newFile);
         }
       }
-      
+
       return state.set('files',
         state.get('files').concat(newFiles),
       );

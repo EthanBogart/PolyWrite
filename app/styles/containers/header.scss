@@ -1,6 +1,6 @@
 .app-header-container {
   border-bottom: solid 1px $PW-black;
   background-color: $PW-light-blue;
-  height: 30px;
+  min-height: 30px;
   @include flex-row-item-stretch();
 }
