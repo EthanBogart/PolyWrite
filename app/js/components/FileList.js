@@ -10,6 +10,7 @@ export default React.createClass({
     openFiles: PropTypes.array.isRequired,
     isSublist: PropTypes.bool.isRequired,
     classes: PropTypes.string,
+    selectedFile: PropTypes.string,
   },
 
   renderHeader() {
@@ -19,7 +20,7 @@ export default React.createClass({
   },
 
   render() {
-    const { openFiles, classes, isSublist } = this.props;
+    const { openFiles, classes, isSublist, selectedFile } = this.props;
 
     if (!openFiles.size) {
       return null;
@@ -38,6 +39,7 @@ export default React.createClass({
               file={file}
               key={key}
               shouldShowButton={!isSublist}
+              selectedFile={selectedFile}
             />
           );
         })}

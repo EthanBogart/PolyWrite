@@ -1,6 +1,7 @@
 'use es6';
 
 import React, { PropTypes } from 'react';
+import classNames from 'classnames';
 
 import RemoveFileButton from './RemoveFileButton';
 import SelectFileButton from './SelectFileButton';
@@ -9,6 +10,7 @@ export default React.createClass({
   PropTypes: {
     file: PropTypes.string.isRequired,
     shouldShowButton: PropTypes.bool.isRequired,
+    selectedFile: PropTypes.string,
   },
 
   renderSelectFileButton() {
@@ -34,10 +36,15 @@ export default React.createClass({
   },
 
   render() {
-    const { file } = this.props;
+    const { file, selectedFile } = this.props;
+
+    const rowClassName = classNames(
+      'file-list-row',
+      { 'file-list-row-selected': file === selectedFile },
+    );
 
     return (
-      <div className="file-list-row">
+      <div className={rowClassName}>
         {file}
         {this.renderSelectFileButton()}
         {this.renderRemoveFileButton()}

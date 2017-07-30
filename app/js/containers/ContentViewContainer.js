@@ -25,7 +25,7 @@ const ContentViewContainer = React.createClass({
   },
 
   renderFolders() {
-    const { openFilesAndFolders, viewName, changeSelectedFile } = this.props;
+    const { openFilesAndFolders, viewName, selectedFile } = this.props;
 
     if (viewName !== views.FOLDERS_VIEW) {
       return null;
@@ -42,7 +42,7 @@ const ContentViewContainer = React.createClass({
       <FoldersView
         openFolders={openFolders}
         openFiles={openFiles}
-        changeSelectedFile={changeSelectedFile}
+        selectedFile={selectedFile}
       />
     );
   },

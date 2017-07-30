@@ -11,10 +11,11 @@ export default React.createClass({
   PropTypes: {
     openFolders: PropTypes.array.isRequired,
     openFiles: PropTypes.array.isRequired,
+    selectedFile: PropTypes.string,
   },
 
   render() {
-    const { openFolders, openFiles } = this.props;
+    const { openFolders, openFiles, selectedFile } = this.props;
 
     return (
       <div>
@@ -22,10 +23,12 @@ export default React.createClass({
         <AddFileButton text="Add another file" />
         <FolderList
           openFolders={openFolders}
+          selectedFile={selectedFile}
         />
         <FileList
           openFiles={openFiles}
           isSublist={false}
+          selectedFile={selectedFile}
         />
       </div>
     );

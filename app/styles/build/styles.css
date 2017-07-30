@@ -48,6 +48,10 @@
   .file-list-row:hover {
     background-color: #FFFFFF; }
 
+.file-list-row-selected {
+  background-color: #000000;
+  color: #FFFFFF; }
+
 .folder-child {
   margin-top: 0 !important;
   margin-bottom: 0 !important; }

@@ -7,10 +7,11 @@ export default React.createClass({
   PropTypes: {
     openFolders: PropTypes.array.isRequired,
     changeSelectedFile: PropTypes.func.isRequired,
+    selectedFile: PropTypes.string,
   },
 
   render() {
-    const { openFolders } = this.props;
+    const { openFolders, selectedFile } = this.props;
 
     if (!openFolders.length) {
       return null;
@@ -26,6 +27,7 @@ export default React.createClass({
             <FolderListRow
               folder={dir}
               key={key}
+              selectedFile={selectedFile}
             />
           );
         })}
