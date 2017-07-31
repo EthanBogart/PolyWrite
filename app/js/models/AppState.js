@@ -1,11 +1,12 @@
 'use es6';
 
-import { Record } from 'immutable';
-import { OpenFilesAndFolders } from './OpenFilesAndFolders';
+import { List, Record } from 'immutable';
+
 import views from './../constants/view';
 
 export default Record({
-  openFilesAndFolders: new OpenFilesAndFolders(),
+  openFiles: new List(),
+  openFolders: new List(),
   viewName: views.FOLDERS_VIEW,
   selectedFile: null,
 }, 'AppState');

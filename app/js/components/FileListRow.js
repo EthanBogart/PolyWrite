@@ -1,4 +1,4 @@
-'use es6';
+// 'use es6';
 
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
@@ -49,7 +49,7 @@ export default React.createClass({
 
     return (
       <div className={rowClassName}>
-        {file}
+        {file.get('name')}
         {this.renderSelectFileButton()}
         {this.renderRemoveFileButton()}
       </div>
