@@ -10,7 +10,7 @@ import configureStore from './configureStore';
 import { loadState } from './js/utils/persist';
 
 const store = configureStore();
-// loadState(store.dispatch);
+loadState(store.dispatch);
 
 ReactDOM.render(
   <Provider store={store}>

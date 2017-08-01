@@ -9,7 +9,7 @@ import selectedFile from './selectedFile';
 
 import { saveState, loadState } from './../utils/persist';
 
-function root(state = AppState(), action) {
+function root(state, action) {
   const newState = new AppState({
     openFiles: openFiles(state.openFiles, action),
     openFolders: openFolders(state.openFolders, action),
@@ -17,13 +17,15 @@ function root(state = AppState(), action) {
     selectedFile: selectedFile(state.selectedFile, action),
   });
 
-  // saveState(state, newState);
+  if (action.type !== '@@INIT') {
+    saveState(newState);
+  }
   return newState;
 }
 
-export default (state = {}, action) => {
+export default (state = new AppState(), action) => {
   if (action.type === ActionTypes.REHYDRATE) {
-    return new AppState(action.payload);
+    return action.payload;
   }
   return root(state, action);
 };

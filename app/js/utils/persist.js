@@ -2,72 +2,109 @@
 
 import * as jsonfile from 'jsonfile';
 import { remote } from 'electron';
-import { List } from 'immutable';
+import { isImmutable, List, Record } from 'immutable';
 
 import createAction from './../actions/createAction';
 import ActionTypes from './../actions/ActionTypes';
-import { Folder, OpenFilesAndFolders } from './../models/OpenFilesAndFolders';
+import { Folder, File } from './../models/OpenFilesAndFolders';
 import AppState from './../models/AppState';
 
-const dataPath = [remote.app.getPath('userData'), 'appState.json'].join('');
+const dataPath = [remote.app.getPath('userData'), 'appState.json'].join('/');
 
-function getFilesAndFoldersObject(oldState, newState) {
-  if (oldState.equals(newState)) {
-    return oldState;
+const descriptiveNames = {
+  File,
+  Folder,
+  AppState,
+};
+
+function WriteTypeException() {
+  this.message = 'Could not convert to JSON. Use immutable or add unsupported type to persist.js file.';
+  this.name = 'WriteTypeException';
+}
+
+function ReadTypeException() {
+  this.message = 'Could not convert to correct state. Add unsupported type to persist.js file.';
+  this.name = 'ReadTypeException';
+}
+
+function convertImmutableToJSON(immutableObject) {
+  switch (true) {
+    case immutableObject === null:
+      return immutableObject;
+    case typeof immutableObject === 'string':
+      return immutableObject;
+    case Array.isArray(immutableObject):
+      return immutableObject.map(element => convertImmutableToJSON(element));
+
+    case isImmutable(immutableObject):
+      switch (true) {
+        case List.isList(immutableObject):
+          return immutableObject
+            .toArray()
+            .map(element => convertImmutableToJSON(element));
+        case Record.isRecord(immutableObject): {
+          return stateToJson(immutableObject);
+        }
+        default:
+          throw new WriteTypeException();
+      }
+
+    default:
+      throw new WriteTypeException();
+  }
+}
+
+function convertJSONToImmutable(object) {
+  switch (true) {
+    case object === null:
+      return object;
+    case typeof object === 'string':
+      return object;
+    case Array.isArray(object):
+      return new List(object.map(element => convertJSONToImmutable(element)));
+    case typeof object === 'object':
+      return toImmutable(object);
+    default:
+      throw new ReadTypeException();
+  }
+}
+
+function toImmutable(data) {
+  const newStateObj = { };
+  let key;
+
+  for (key in data) {
+    newStateObj[key] = convertJSONToImmutable(data[key]);
   }
 
-  const newFiles = newState.get('files').toArray();
-  const newFolders = newState.get('folders').map((folder) => {
-    const newFolder = folder.toJSON();
-    newFolder.files = newFolder.files.toArray();
-    return newFolder;
-  });
-
-  return {
-    files: newFiles,
-    folders: newFolders,
-  };
+  return new descriptiveNames[data.recordType](newStateObj);
 }
 
-function getFilesAndFoldersRecord(data) {
-  const loadedFiles = data.OpenFilesAndFolders;
-  const newFolders = loadedFiles.folders.map((folder) => {
-    return new Folder({
-      path: folder.path,
-      files: new List(folder.files),
-    });
-  });
+function stateToJson(newState) {
+  const jsonState = newState.toJS();
+  let key;
 
-  const newOpen = new OpenFilesAndFolders({
-    folders: newFolders,
-    files: new List(loadedFiles.files),
-  });
+  for (key in jsonState) {
+    jsonState[key] = convertImmutableToJSON(newState.get(key));
+  }
 
-  return newOpen;
+  jsonState.recordType = Record.getDescriptiveName(newState);
+  return jsonState;
 }
 
-export function saveState(oldState, newState) {
-  const stateToSave = {
-    openFilesAndFolders: getFilesAndFoldersObject(oldState, newState),
-    viewName: newState.get('viewName'),
-    selectedFile: newState.get('selectedFile'),
-  };
-
+export function saveState(newState) {
   try {
-    jsonfile.writeFile(dataPath, stateToSave);
-  } catch (err) { }
+    jsonfile.writeFile(dataPath, stateToJson(newState));
+  } catch (err) { console.log(err); }
 }
 
 export function loadState(dispatch) {
   jsonfile.readFile(dataPath, (err, data) => {
+    if (err) {
+      console.log(err);
+    }
     if (!err) {
-      const loadedState = new AppState({
-        openFilesAndFolders: getFilesAndFoldersRecord(data),
-        viewName: data.viewName,
-        selectedFile: data.selectedFile,
-      });
-
-      dispatch(createAction(ActionTypes.REHYDRATE, loadedState));
+      dispatch(createAction(ActionTypes.REHYDRATE, toImmutable(data)));
     }
   });
 }

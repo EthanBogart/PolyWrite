@@ -45,7 +45,7 @@ export default function openFolders(
           }
         }
       }
-      debugger;
+
       return state.concat(new List(newFolders));
     }
     default:
