@@ -6,7 +6,7 @@ import Quill from 'quill';
 
 export default React.createClass({
   PropTypes: {
-    selectedFile: PropTypes.string.isRequired,
+    selectedFile: PropTypes.object.isRequired,
   },
 
   getInitialState() {
@@ -15,7 +15,7 @@ export default React.createClass({
     let text = '';
 
     try {
-      text = fs.readFileSync(selectedFile, 'utf8');
+      text = fs.readFileSync(selectedFile.get('name'), 'utf8');
     } catch (err) {
       text = 'Could not open file';
     }
