@@ -14,7 +14,8 @@ const { PropTypes } = React;
 const ContentViewContainer = React.createClass({
   PropTypes: {
     selectedFile: PropTypes.string,
-    openFilesAndFolders: PropTypes.object,
+    openFiles: PropTypes.object,
+    openFolders: PropTypes.object,
     viewName: PropTypes.string,
   },
 
@@ -25,16 +26,13 @@ const ContentViewContainer = React.createClass({
   },
 
   renderFolders() {
-    const { openFilesAndFolders, viewName, selectedFile } = this.props;
+    const { openFiles, openFolders, viewName, selectedFile } = this.props;
 
     if (viewName !== views.FOLDERS_VIEW) {
       return null;
     }
 
-    const openFiles = openFilesAndFolders.get('files');
-    const openFolders = openFilesAndFolders.get('folders');
-
-    if (!openFiles.size && !openFolders.length) {
+    if (!openFiles.size && !openFolders.size) {
       return this.renderNoFolders();
     }
 
@@ -92,7 +90,8 @@ export default connect(
   (state) => {
     return {
       selectedFile: state.selectedFile,
-      openFilesAndFolders: state.openFilesAndFolders,
+      openFiles: state.openFiles,
+      openFolders: state.openFolders,
       viewName: state.viewName,
     };
   },

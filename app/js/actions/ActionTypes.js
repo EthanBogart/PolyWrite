@@ -1,6 +1,8 @@
 import keyMirror from 'keymirror';
 
 export default keyMirror({
+  REHYDRATE: null,
+
   ADD_FOLDER: null,
   REMOVE_FOLDER: null,
 

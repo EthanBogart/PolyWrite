@@ -13,19 +13,19 @@ export default React.createClass({
   render() {
     const { openFolders, selectedFile } = this.props;
 
-    if (!openFolders.length) {
+    if (!openFolders.size) {
       return null;
     }
 
     return (
       <div className="folder-file-list">
         <h3>Open Folders:</h3>
-        {openFolders.map((dir, index) => {
-          const key = [index, dir].join('-');
+        {openFolders.map((folder, index) => {
+          const key = [index, folder.get('path')].join('-');
 
           return (
             <FolderListRow
-              folder={dir}
+              folder={folder}
               key={key}
               selectedFile={selectedFile}
             />

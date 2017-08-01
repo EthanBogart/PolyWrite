@@ -1,4 +1,4 @@
-'use es6';
+// 'use es6';
 
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
@@ -13,10 +13,19 @@ export default React.createClass({
     selectedFile: PropTypes.string,
   },
 
-  renderSelectFileButton() {
+  isFileSelected() {
     const { file, selectedFile } = this.props;
 
-    const text = file === selectedFile
+    if (selectedFile !== null && file.equals(selectedFile)) {
+      return true;
+    }
+    return false;
+  },
+
+  renderSelectFileButton() {
+    const { file } = this.props;
+
+    const text = this.isFileSelected()
       ? 'Unselect this file'
       : 'Select this file';
 
@@ -40,16 +49,16 @@ export default React.createClass({
   },
 
   render() {
-    const { file, selectedFile } = this.props;
+    const { file } = this.props;
 
     const rowClassName = classNames(
       'file-list-row',
-      { 'file-list-row-selected': file === selectedFile },
+      { 'file-list-row-selected': this.isFileSelected() },
     );
 
     return (
       <div className={rowClassName}>
-        {file}
+        {file.get('name')}
         {this.renderSelectFileButton()}
         {this.renderRemoveFileButton()}
       </div>
