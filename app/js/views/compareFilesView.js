@@ -29,21 +29,16 @@ export default React.createClass({
   componentDidMount() {
     const { text } = this.state;
 
-    const preview = new Quill('#editor', {
-      modules: { toolbar: '#toolbar' },
-    });
-
+    const preview = new Quill('#editor');
+    preview.enable(false);
     preview.setText(text);
   },
 
   render() {
     return (
-      <div>
-        <div id="toolbar">
-          <button>Bold</button>
-          <button>Italic</button>
-        </div>
-        <div id="editor" />
+      <div className="text-preview-container flex-column-container">
+        <div>Preview of file changes:</div>
+        <div id="editor" className="text-preview"/>
       </div>
     );
   },

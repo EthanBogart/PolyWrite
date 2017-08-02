@@ -56,6 +56,18 @@
   margin-top: 0 !important;
   margin-bottom: 0 !important; }
 
+.text-preview-container {
+  margin: 10px; }
+
+.text-preview {
+  display: flex;
+  overflow: scroll;
+  background-color: #FFFFFF;
+  color: #000000;
+  text-align: left;
+  margin-top: 6px;
+  border: solid #000000 1px; }
+
 body {
   margin: 0;
   overflow: hidden; }
