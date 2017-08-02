@@ -14,9 +14,10 @@ export default React.createClass({
     const { selectedFile } = this.props;
 
     let text = '';
+    const path = [selectedFile.get('path'), selectedFile.get('name')].join('/');
 
     try {
-      text = fs.readFileSync(selectedFile.get('name'), 'utf8');
+      text = fs.readFileSync(path, 'utf8');
     } catch (err) {
       text = 'Could not open file';
     }
