@@ -1,6 +1,7 @@
 'use es6';
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import FileList from './FileList';
 
 export default React.createClass({

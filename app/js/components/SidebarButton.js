@@ -1,6 +1,5 @@
 import React from 'react';
-
-const { PropTypes } = React;
+import PropTypes from 'prop-types';
 
 export default React.createClass({
   propTypess: {

@@ -1,4 +1,7 @@
-import React, { PropTypes } from 'react';
+'use es6';
+
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import switchView from './../actions/ViewActions';

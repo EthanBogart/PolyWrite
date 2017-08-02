@@ -1,6 +1,7 @@
 'use es6';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import FoldersView from './../views/FoldersView';
@@ -8,8 +9,6 @@ import NoFoldersView from './../views/NoFoldersView';
 import CompareFilesView from './../views/CompareFilesView';
 
 import views from './../constants/view';
-
-const { PropTypes } = React;
 
 const ContentViewContainer = React.createClass({
   PropTypes: {

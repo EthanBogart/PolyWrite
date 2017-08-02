@@ -1,8 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AddFolderButton from './../components/AddFolderButton';
 import AddFileButton from './../components/AddFileButton';
-
-const { PropTypes } = React;
 
 export default React.createClass({
   PropTypes: {
