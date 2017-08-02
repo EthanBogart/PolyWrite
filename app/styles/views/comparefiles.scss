@@ -1,0 +1,13 @@
+.text-preview-container {
+  margin: 10px;
+}
+
+.text-preview {
+  display: flex;
+  overflow: auto;
+  background-color: $PW-white;
+  color: $PW-black;
+  text-align: left;
+  margin-top: 6px;
+  border: solid $PW-black 1px;
+}

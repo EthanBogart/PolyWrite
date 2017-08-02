@@ -61,7 +61,7 @@
 
 .text-preview {
   display: flex;
-  overflow: scroll;
+  overflow: auto;
   background-color: #FFFFFF;
   color: #000000;
   text-align: left;
