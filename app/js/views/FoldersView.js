@@ -13,10 +13,11 @@ export default React.createClass({
     openFolders: PropTypes.array.isRequired,
     openFiles: PropTypes.array.isRequired,
     selectedFile: PropTypes.string,
+    folderClicked: PropTypes.func,
   },
 
   render() {
-    const { openFolders, openFiles, selectedFile } = this.props;
+    const { openFolders, openFiles, selectedFile, folderClicked } = this.props;
 
     return (
       <div>
@@ -25,6 +26,7 @@ export default React.createClass({
         <FolderList
           openFolders={openFolders}
           selectedFile={selectedFile}
+          folderClicked={folderClicked}
         />
         <FileList
           openFiles={openFiles}

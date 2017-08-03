@@ -5,6 +5,7 @@ import { Record, List } from 'immutable';
 export const Folder = Record({
   path: '',
   name: '',
+  isListOpen: false,
   files: new List(),
 }, 'Folder');
 

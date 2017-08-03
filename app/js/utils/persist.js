@@ -33,6 +33,8 @@ function convertImmutableToJSON(immutableObject) {
       return immutableObject;
     case typeof immutableObject === 'string':
       return immutableObject;
+    case typeof immutableObject === 'boolean':
+      return immutableObject;
     case Array.isArray(immutableObject):
       return immutableObject.map(element => convertImmutableToJSON(element));
 
@@ -59,6 +61,8 @@ function convertJSONToImmutable(object) {
     case object === null:
       return object;
     case typeof object === 'string':
+      return object;
+    case typeof object === 'boolean':
       return object;
     case Array.isArray(object):
       return new List(object.map(element => convertJSONToImmutable(element)));

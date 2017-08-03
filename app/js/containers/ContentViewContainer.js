@@ -10,12 +10,15 @@ import CompareFilesView from './../views/CompareFilesView';
 
 import views from './../constants/view';
 
+import * as FolderActions from './../actions/FolderActions';
+
 const ContentViewContainer = React.createClass({
   PropTypes: {
     selectedFile: PropTypes.string,
     openFiles: PropTypes.object,
     openFolders: PropTypes.object,
     viewName: PropTypes.string,
+    folderClicked: PropTypes.func,
   },
 
   renderNoFolders() {
@@ -25,7 +28,13 @@ const ContentViewContainer = React.createClass({
   },
 
   renderFolders() {
-    const { openFiles, openFolders, viewName, selectedFile } = this.props;
+    const {
+      openFiles,
+      openFolders,
+      viewName,
+      selectedFile,
+      folderClicked,
+    } = this.props;
 
     if (viewName !== views.FOLDERS_VIEW) {
       return null;
@@ -40,6 +49,7 @@ const ContentViewContainer = React.createClass({
         openFolders={openFolders}
         openFiles={openFiles}
         selectedFile={selectedFile}
+        folderClicked={folderClicked}
       />
     );
   },
@@ -94,5 +104,7 @@ export default connect(
       viewName: state.viewName,
     };
   },
-  { },
+  {
+    ...FolderActions,
+  },
 )(ContentViewContainer);

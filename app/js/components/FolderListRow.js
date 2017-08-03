@@ -8,27 +8,18 @@ export default React.createClass({
   PropTypes: {
     folder: PropTypes.object.isRequired,
     selectedFile: PropTypes.string,
+    folderClicked: PropTypes.func,
   },
 
-  getInitialState() {
-    return {
-      showFileList: false,
-    };
-  },
+  onFolderClicked() {
+    const { folderClicked, folder } = this.props;
 
-  onFolderClick() {
-    const { showFileList } = this.state;
-
-    this.setState({
-      showFileList: !showFileList,
-    });
+    folderClicked(folder);
   },
 
   renderFileList() {
     const { folder, selectedFile } = this.props;
-    const { showFileList } = this.state;
-
-    if (!showFileList) {
+    if (!folder.get('isListOpen')) {
       return null;
     }
 
@@ -48,7 +39,7 @@ export default React.createClass({
     return (
       <div
         className="folder-list-row"
-        onClick={this.onFolderClick}
+        onClick={this.onFolderClicked}
       >
         {folder.get('path')}
         {this.renderFileList()}

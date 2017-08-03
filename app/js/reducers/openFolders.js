@@ -32,7 +32,7 @@ export default function openFolders(
               },
             ).map(file => new File({
               path: newFolder,
-              name: file
+              name: file,
             }));
 
             newFolders.push(new Folder({
@@ -47,6 +47,20 @@ export default function openFolders(
       }
 
       return state.concat(new List(newFolders));
+    }
+    case ActionTypes.FOLDER_CLICKED: {
+      const clickedFolder = action.payload;
+      const clickedIndex = state.findIndex((folder) => {
+        return folder.equals(clickedFolder);
+      });
+
+      return state.set(
+        clickedIndex,
+        clickedFolder.set(
+          'isListOpen',
+          !clickedFolder.get('isListOpen'),
+        ),
+      );
     }
     default:
       return state;

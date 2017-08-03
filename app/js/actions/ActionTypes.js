@@ -5,6 +5,7 @@ export default keyMirror({
 
   ADD_FOLDER: null,
   REMOVE_FOLDER: null,
+  FOLDER_CLICKED: null,
 
   ADD_FILE: null,
   REMOVE_FILE: null,

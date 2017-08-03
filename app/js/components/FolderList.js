@@ -9,10 +9,11 @@ export default React.createClass({
     openFolders: PropTypes.array.isRequired,
     changeSelectedFile: PropTypes.func.isRequired,
     selectedFile: PropTypes.string,
+    folderClicked: PropTypes.func,
   },
 
   render() {
-    const { openFolders, selectedFile } = this.props;
+    const { openFolders, selectedFile, folderClicked } = this.props;
 
     if (!openFolders.size) {
       return null;
@@ -29,6 +30,7 @@ export default React.createClass({
               folder={folder}
               key={key}
               selectedFile={selectedFile}
+              folderClicked={folderClicked}
             />
           );
         })}

@@ -39,7 +39,7 @@ export default React.createClass({
     return (
       <div className="text-preview-container flex-column-container">
         <div>Preview of file changes:</div>
-        <div id="editor" className="text-preview"/>
+        <div id="editor" className="text-preview" />
       </div>
     );
   },

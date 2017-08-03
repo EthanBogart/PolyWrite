@@ -31,3 +31,10 @@ export function changeSelectedFile(file) {
     file,
   );
 }
+
+export function folderClicked(folder) {
+  return createAction(
+    ActionTypes.FOLDER_CLICKED,
+    folder,
+  );
+}
