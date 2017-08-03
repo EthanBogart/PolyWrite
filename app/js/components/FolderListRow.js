@@ -38,11 +38,13 @@ export default React.createClass({
     const { folder } = this.props;
 
     return (
-      <div
-        className="folder-list-row"
-        onClick={this.onFolderClicked}
-      >
-        {folder.get('path')}
+      <div>
+        <div
+          className="folder-list-row"
+          onClick={this.onFolderClicked}
+        >
+          {folder.get('path')}
+        </div>
         {this.renderFileList()}
       </div>
     );
