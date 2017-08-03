@@ -9,6 +9,8 @@ import ActionTypes from './../actions/ActionTypes';
 import { Folder, File } from './../models/OpenFilesAndFolders';
 import AppState from './../models/AppState';
 
+import safeSave from './safesave';
+
 const dataPath = [remote.app.getPath('userData'), 'appState.json'].join('/');
 
 const descriptiveNames = {
@@ -98,7 +100,7 @@ function stateToJson(newState) {
 
 export function saveState(newState) {
   try {
-    jsonfile.writeFile(dataPath, stateToJson(newState));
+    safeSave(dataPath, stateToJson(newState));
   } catch (err) { console.log(err); }
 }
 

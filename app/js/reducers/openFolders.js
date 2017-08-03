@@ -11,7 +11,7 @@ import mime from 'mime-types';
 function readContainingFiles(folderPath) {
   let files;
 
-  // try {
+  try {
     const children = new List(fs.readdirSync(folderPath));
     // Filters out folders and hidden files
     files = children.filter(
@@ -25,9 +25,9 @@ function readContainingFiles(folderPath) {
       path: folderPath,
       name: file,
     }));
-  // } catch (err) {
-  //   files = new List();
-  // }
+  } catch (err) {
+    files = new List();
+  }
 
   return files;
 }

@@ -3,6 +3,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as fs from 'fs';
+import mime from 'mime-types';
 import Quill from 'quill';
 
 export default React.createClass({
@@ -17,7 +18,11 @@ export default React.createClass({
     const path = [selectedFile.get('path'), selectedFile.get('name')].join('/');
 
     try {
-      text = fs.readFileSync(path, 'utf8');
+      if (mime.lookup(path) !== 'text/plain') {
+        text = 'This file is not supported. Please select a plain text file.';
+      } else {
+        text = fs.readFileSync(path, 'utf8');
+      }
     } catch (err) {
       text = 'Could not open file';
     }
