@@ -31,6 +31,7 @@ export default React.createClass({
               key={key}
               selectedFile={selectedFile}
               folderClicked={folderClicked}
+              index={index}
             />
           );
         })}

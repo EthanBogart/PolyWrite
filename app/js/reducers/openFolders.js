@@ -49,10 +49,8 @@ export default function openFolders(
       return state.concat(new List(newFolders));
     }
     case ActionTypes.FOLDER_CLICKED: {
-      const clickedFolder = action.payload;
-      const clickedIndex = state.findIndex((folder) => {
-        return folder.equals(clickedFolder);
-      });
+      const clickedFolder = action.payload.folder;
+      const clickedIndex = action.payload.index;
 
       return state.set(
         clickedIndex,

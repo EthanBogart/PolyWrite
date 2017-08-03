@@ -9,12 +9,13 @@ export default React.createClass({
     folder: PropTypes.object.isRequired,
     selectedFile: PropTypes.string,
     folderClicked: PropTypes.func,
+    index: PropTypes.number.isRequired,
   },
 
   onFolderClicked() {
-    const { folderClicked, folder } = this.props;
+    const { folderClicked, folder, index } = this.props;
 
-    folderClicked(folder);
+    folderClicked(folder, index);
   },
 
   renderFileList() {
