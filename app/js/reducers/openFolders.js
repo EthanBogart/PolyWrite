@@ -6,6 +6,8 @@ import { List } from 'immutable';
 import { File, Folder } from './../models/OpenFilesAndFolders';
 import ActionTypes from './../actions/ActionTypes';
 
+import mime from 'mime-types';
+
 export default function openFolders(
   state = new List(),
   action,
@@ -27,7 +29,7 @@ export default function openFolders(
               (file) => {
                 const path = [newFolder, file].join('/');
 
-                return fs.statSync(path).isFile()
+                return mime.lookup(path) === 'text/plain'
                   && !(/(^|\/)\.[^\/\.]/g).test(file);
               },
             ).map(file => new File({
