@@ -33,7 +33,6 @@ export function changeSelectedFile(file) {
 }
 
 export function folderClicked(folder, index) {
-  debugger;
   return createAction(
     ActionTypes.FOLDER_CLICKED,
     {
