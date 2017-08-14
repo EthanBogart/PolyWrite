@@ -6,6 +6,8 @@ import * as fs from 'fs';
 import mime from 'mime-types';
 import Quill from 'quill';
 
+import { diffInstance } from '../utils/webassembly';
+
 export default React.createClass({
   PropTypes: {
     selectedFile: PropTypes.object.isRequired,
@@ -38,6 +40,8 @@ export default React.createClass({
     const preview = new Quill('#editor');
     preview.enable(false);
     preview.setText(text);
+
+    diffInstance();
   },
 
   render() {
