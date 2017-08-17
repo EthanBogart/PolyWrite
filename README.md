@@ -1,5 +1,5 @@
 # PolyWrite
-PolyWrite desktop application. This project is now dead. As of [https://techcrunch.com/2017/08/16/google-updates-docs-sheets-and-slides-with-new-collaboration-features/](Google's Docs update) that allows versioning, PolyWrite has become redundant. It was originally intended to be a sort of version control system made easy for non-geeks, and that mission is over after about a month of development. Credits to Calvin Wan (Github handle TheChosenZygote) for implementing Myers algorithm very nicely in C++.
+PolyWrite desktop application. This project is now dead. As of [Google's Docs update](https://techcrunch.com/2017/08/16/google-updates-docs-sheets-and-slides-with-new-collaboration-features) that allows versioning, PolyWrite has become redundant. It was originally intended to be a sort of version control system made easy for non-geeks, and that mission is over after about a month of development. Credits to Calvin Wan (Github handle TheChosenZygote) for implementing Myers algorithm very nicely in C++.
 
 The backend service is located in the [PolyWriteService repo.](https://github.com/EthanBogart/PolyWriteService) It is obviously far from usability but the basic framework is there.
 
